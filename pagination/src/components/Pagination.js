@@ -1,11 +1,19 @@
 import React from 'react';
 
-const Pagination = ({ usersPerPage, totalUsers, changePage, currentPage, paginate }) => {
+const Pagination = ({ usersPerPage, totalUsers, changePage, currentPage, paginate, theme }) => {
     const pageNumbers = []
 
     for (let i = 1; i <= Math.ceil(totalUsers / usersPerPage); i++) {
         pageNumbers.push(i)
     }
+
+    let button
+    if (theme === 'dark-theme') {
+        button = "darkButton"
+    } else {
+        button = 'button'
+    }
+    console.log(button)
 
     return (
         <div className='paginateContainer'>
@@ -14,7 +22,7 @@ const Pagination = ({ usersPerPage, totalUsers, changePage, currentPage, paginat
                 pageNumbers.map(number => (
                     <button
                         key={number}
-                        className={`button ${number === currentPage? 'activeButton' : ''}`}
+                        className={`${button} ${number === currentPage ? 'activeButton' : ''}`}
                         onClick={() => paginate(number)}>
                         {number}
                     </button>

@@ -6,19 +6,43 @@
   color: #102a42;
 }
 
-body {
+.container {
   background: rgb(240, 242, 245);
+  padding: 50px 60px;
+  text-align: center;
+    transition: all 0.3s ease;
 }
 
-.container {
-  padding: 0 60px 50px;
-  text-align: center;
+.darkContainer {
+  background-color: #202227;
+}
+
+.darkContainer * {
+  color: #fff;
+}
+
+.themeBtn {
+  position: absolute;
+  top: 70px;
+  right: 80px;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #102a42;
+  color: #fff;
+}
+
+.darkThemeBtn {
+  background-color: #fff;
+  color: #102a42;
 }
 
 .title {
   text-align: center;
   position: relative;
-  margin: 50px 0;
+  margin-bottom: 50px;
   font-size: 2.8rem;
 }
 
@@ -39,6 +63,14 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 0.5rem;
   row-gap: 0.5rem;
+}
+
+.darkCards > div {
+  background-color: #1a1a1a;
+}
+
+.darkCards * {
+  color: #fff !important;
 }
 
 .card {
@@ -104,9 +136,21 @@ body {
   transition: all 0.3s ease;
 }
 
+.darkButton {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #49a6e9;
+  margin: 30px 10px;
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s ease;
+}
+
 .activeButton {
   background: #063251;
-  color: #fff;
+  color: rgb(255, 255, 255);
 }
 
 .prev,
@@ -123,7 +167,19 @@ body {
 /* responsive */
 @media (max-width: 915px) {
   .container {
-    padding: 0 30px 50px;
+    padding: 50px 30px;
     text-align: center;
+  }
+}
+
+@media (max-width: 550px) {
+  .paginateContainer {
+   flex-wrap: wrap;
+  }
+
+  .themeBtn {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
   }
 }

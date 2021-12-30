@@ -2,7 +2,7 @@ import ShowCase from "./components/ShowCase";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <ShowCase />
     </div>
   );

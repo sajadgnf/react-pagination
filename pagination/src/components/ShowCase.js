@@ -9,10 +9,20 @@ import Pagination from './Pagination'
 
 const ShowCase = () => {
 
+    const getStorageTheme = () => {
+        let theme = "light-theme"
+
+        if (localStorage.getItem("theme")) {
+            theme = localStorage.getItem('theme')
+        }
+        return theme
+    }
+
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
     const [usersPerPage] = useState(10)
+    const [theme, setTheme] = useState(getStorageTheme())
 
     useEffect(() => {
         const fetchAPI = async () => {
@@ -22,6 +32,11 @@ const ShowCase = () => {
 
         fetchAPI()
     }, [])
+
+    //get the theme mode
+    useEffect(() => {
+        localStorage.setItem('theme', theme)
+    }, [theme])
 
     // get current page
     const indexOfLastPage = currentPage * usersPerPage
@@ -36,7 +51,7 @@ const ShowCase = () => {
             setCurrentPage((oldPage) => {
                 let prevPage = oldPage - 1
                 if (prevPage < 1) {
-                    prevPage = number 
+                    prevPage = number
                 }
                 return prevPage
             })
@@ -51,14 +66,29 @@ const ShowCase = () => {
         }
     }
 
+    // theme handler
+    const themeHandler = () => {
+        if (theme === "light-theme") {
+            setTheme("dark-theme")
+        } else {
+            setTheme("light-theme")
+        }
+    }
+
     return (
-        <div className="container">
-            <h1 className="title">Pagination</h1>
+        <div className={`container ${theme === "dark-theme" && "darkContainer"}`}>
+            <h1 className='title'>Pagination</h1>
+            <button
+                onClick={themeHandler}
+                className={`themeBtn ${theme === "dark-theme" && 'darkThemeBtn'}`}
+            >
+                {theme === "dark-theme" ? 'LIGHT' : 'DARK'}
+            </button>
             {
                 loading ?
                     <p>Loading...</p> :
                     <>
-                        <div className="cards">
+                        <div className={`cards ${theme === "dark-theme" && 'darkCards'}`}>
                             {currentUsers.map(user =>
                                 <User key={user.id}
                                     name={user.login}
@@ -73,6 +103,7 @@ const ShowCase = () => {
                             paginate={paginate}
                             changePage={changePage}
                             currentPage={currentPage}
+                            theme={theme}
                         />
                     </>
             }
