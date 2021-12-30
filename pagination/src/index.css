@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: #102a42;
+}
+
+body {
+  background: rgb(240, 242, 245);
+}
+
+.container {
+  padding: 0 60px 50px;
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  position: relative;
+  margin: 50px 0;
+  font-size: 2.8rem;
+}
+
+.title::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 5px;
+  width: 120px;
+  border-radius: 50px;
+  background: #49a6e9;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.5rem;
+  row-gap: 0.5rem;
+}
+
+.card {
+  padding: 2rem 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin: 15px;
+}
+
+.card img {
+  width: 120px;
+  border-radius: 50%;
+}
+
+.card p {
+  color: #617d98;
+  font-weight: bold;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin: 15px 0 18px;
+  text-transform: capitalize;
+}
+
+.linkBtn {
+  border: none;
+  outline: none;
+  background: #49a6e9;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4px 10px;
+  transition: all 0.2s ease;
+}
+
+.linkBtn a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.linkBtn:hover {
+  background: #617d98;
+}
+
+.paginateContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #8bcbf9;
+  margin: 30px 10px;
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s ease;
+}
+
+.activeButton {
+  background: #063251;
+  color: #fff;
+}
+
+.prev,
+.next {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* responsive */
+@media (max-width: 915px) {
+  .container {
+    padding: 0 30px 50px;
+    text-align: center;
+  }
+}
